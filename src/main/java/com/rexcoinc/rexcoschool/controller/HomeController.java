@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
 
     @RequestMapping(value = {"", "/", "home"}, method = RequestMethod.GET)
-    public String welcomeHome(Model model){
-        model.addAttribute("username", "Emeka");
+    public String welcomeHome(){
+//        model.addAttribute("username", "Emeka");
         return "home.html";
     }
 }
