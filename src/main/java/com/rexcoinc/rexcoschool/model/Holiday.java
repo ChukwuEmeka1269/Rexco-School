@@ -8,8 +8,7 @@ import lombok.experimental.FieldDefaults;
 
 @Data
 @AllArgsConstructor
-@FieldDefaults(makeFinal = true)
-public class Holiday {
+public class Holiday extends BaseEntity {
     private String day;
     private String reason;
     private Type type;

@@ -3,23 +3,22 @@ Author: W3layouts
 Author URL: http://w3layouts.com
 -->
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Rexco School - Best Educational Institute for your Child</title>
+    <title>Eazy School - Best Educational Institute for your Child</title>
     <!-- Google fonts -->
     <link href="//fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- Template CSS Style link -->
-    <link rel="stylesheet" href="assets/css/style-starter.css" th:href="@{/assets/css/style-starter.css}">
+    <link rel="stylesheet" href="assets/css/style-starter.css">
 </head>
 
 <body>
     <!-- header -->
-    <div th:replace="~{header :: header}"></div>
+    <div th:replace="~{header :: header}">...</div>
     <!-- //header -->
 
     <!-- banner section -->
@@ -56,13 +55,13 @@ Author URL: http://w3layouts.com
         <div class="container py-md-5 py-4">
             <div class="title-main text-center mx-auto mb-md-5 mb-4" style="max-width:500px;">
                 <p class="text-uppercase">Best Features</p>
-                <h3 class="title-style">Achieve Your Goals With Rexco School</h3>
+                <h3 class="title-style">Achieve Your Goals With Eazy School</h3>
             </div>
             <div class="row">
                 <div class="col-md-6 col-lg-3 d-flex align-items-stretch">
                     <div class="icon-box icon-box-clr-1">
                         <div class="icon"><i class="fas fa-user-friends"></i></div>
-                        <h4 class="title"><a th:href="@{/about}">Expert Teachers</a></h4>
+                        <h4 class="title"><a>Expert Teachers</a></h4>
                         <p>Well experienced teachers for each subject. No common teacher for all subjects.</p>
                     </div>
                 </div>
@@ -76,14 +75,14 @@ Author URL: http://w3layouts.com
                 <div class="col-md-6 col-lg-3 d-flex align-items-stretch mt-lg-0 mt-4">
                     <div class="icon-box icon-box-clr-3">
                         <div class="icon"><i class="fas fa-user-graduate"></i></div>
-                        <h4 class="title"><a th:href="@{/contact}">Alumni Support</a></h4>
+                        <h4 class="title"><a>Alumni Support</a></h4>
                         <p>Life time Alumni support through various channels available .</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 d-flex align-items-stretch mt-lg-0 mt-4">
                     <div class="icon-box icon-box-clr-4">
                         <div class="icon"><i class="fas fa-university"></i></div>
-                        <h4 class="title"><a th:href="@{/about}">Best Scholarships</a></h4>
+                        <h4 class="title"><a>Best Scholarships</a></h4>
                         <p>Best Scholarships available for the low income family students.</p>
                     </div>
                 </div>
@@ -115,7 +114,7 @@ Author URL: http://w3layouts.com
                         <li><i class="fas fa-check-circle"></i>Access more than 100K online courses</li>
                         <li><i class="fas fa-check-circle"></i>Traditional Academies</li>
                     </ul>
-                    <a class="btn btn-style mt-5">Apply Now</a>
+                    <a th:href="@{/contact}" class="btn btn-style mt-5">Apply Now</a>
                 </div>
             </div>
         </div>
@@ -197,7 +196,7 @@ Author URL: http://w3layouts.com
                                 <img src="assets/images/testi1.jpg" class="img-fluid rounded-circle"
                                     alt="client image" />
                                 <blockquote class="quote"><q>I am very happy that my son is studying in the
-                                    Rexco school. The support provided by the teachers is great and the curriculum
+                                    Eazy school. The support provided by the teachers is great and the curriculum
                                     that they follow is of international standards.
                                     </q> </blockquote>
                                 <div class="source">- Mario Spe</div>
@@ -207,7 +206,7 @@ Author URL: http://w3layouts.com
                                 <img src="assets/images/testi2.jpg" class="img-fluid rounded-circle"
                                     alt="client image" />
                                 <blockquote class="quote"><q>My child never felt pressure of studies in
-                                    the Rexco School. He is always encouraged to follow his own interest
+                                    the Eazy School. He is always encouraged to follow his own interest
                                      and the school provides wide variety of programs for the students
                                      outside studies.
                                     </q> </blockquote>
@@ -235,7 +234,7 @@ Author URL: http://w3layouts.com
                             <li class="anim5">
                                 <img src="assets/images/testi2.jpg" class="img-fluid rounded-circle"
                                     alt="client image" />
-                                <blockquote class="quote"><q>Rexco Schools supports both online and offline
+                                <blockquote class="quote"><q>Eazy Schools supports both online and offline
                                     classes based on the pandemic conditions to make sure that there is
                                      no impact on the children studies. School staff always does their
                                      best to accommodate parents request.
@@ -353,7 +352,7 @@ Author URL: http://w3layouts.com
     <!-- //call block -->
 
     <!-- footer block -->
-    <div th:replace="~{footer :: footer}"></div>
+    <div th:replace="~{footer :: footer}">...</div>
     <!-- //footer block -->
 
     <!-- Js scripts -->

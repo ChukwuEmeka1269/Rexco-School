@@ -3,6 +3,7 @@ package com.rexcoinc.rexcoschool.security;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -29,29 +30,24 @@ public class AppSecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-       return http.csrf().disable()
-               .authorizeHttpRequests()
-               .requestMatchers("/dashboard").authenticated()
-               .requestMatchers("/home").permitAll()
-               .requestMatchers("/holidays/**").permitAll()
-               .requestMatchers("/assets/**").permitAll()
-               .requestMatchers("/contact").permitAll()
-               .requestMatchers("/saveMsg").permitAll()
-               .requestMatchers("/courses").permitAll()
-               .requestMatchers("/about").permitAll()
-               .requestMatchers("/login").permitAll()
-               .and()
-               .formLogin()
-               .loginPage("/login")
-               .defaultSuccessUrl("/dashboard")
-               .failureUrl("/login?error=true").permitAll()
-               .and()
-               .logout()
-               .logoutSuccessUrl("/login?logout=true")
-               .invalidateHttpSession(true).permitAll()
-               .and().httpBasic()
-               .and().build();
+
+        String[] publicEndPoints = {"/home", "/holidays/**", "/contact", "/saveMsg", "/courses", "/about", "/login", "/logout", "/assets/**"};
+        String[] adminAccessibleEndPoints = {"/displayMessages", "/closeMsg/**"};
+        String[] authenticatedEndpoints = {"/dashboard"};
+
+        http.csrf().ignoringRequestMatchers("/saveMsg").and()
+                .authorizeHttpRequests()
+                .requestMatchers(authenticatedEndpoints).authenticated()
+                .requestMatchers(adminAccessibleEndPoints).hasRole("ADMIN")
+                .requestMatchers(publicEndPoints).permitAll()
+                .and().formLogin().loginPage("/login")
+                .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll()
+                .and().logout().logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll()
+                .and().httpBasic();
+        return http.build();
     }
+
+
 
 //
 //    @Bean
@@ -81,25 +77,24 @@ public class AppSecurityConfiguration {
 //
 //    }
 //
-//
-//
+
+
     @Bean
     public InMemoryUserDetailsManager userDetailsService(){
+
         UserDetails user = User.withDefaultPasswordEncoder()
-                .username("Emeka")
-                .password("pass")
+                .username("user")
+                .password("12345")
+                .roles("USER")
+                .build();
+        UserDetails admin = User.withDefaultPasswordEncoder()
+                .username("admin")
+                .password("54321")
                 .roles("ADMIN")
                 .build();
-
-
-        UserDetails user1 = User.withDefaultPasswordEncoder()
-                .username("Joe")
-                .password("p@ss")
-                .roles("USER").build();
-
-        return new InMemoryUserDetailsManager(user, user1);
+        return new InMemoryUserDetailsManager(user, admin);
     }
-
+//
 //    @Bean
 //    public AuthenticationManager getAuthenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
 //        return authenticationConfiguration.getAuthenticationManager();
